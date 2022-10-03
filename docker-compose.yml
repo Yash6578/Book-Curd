@@ -1,3 +1,4 @@
+---
 version: "3"
 networks:
   - spring-sql-network:
@@ -7,8 +8,8 @@ services:
     networks:
       - spring-sql-network
     environment:
-      - MYSQL_ROOT_PASSWORD: root
-      - MYSQL_DATABASE: book
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=book
   book-app:
     image: book-app
     networks:
@@ -17,3 +18,4 @@ services:
       - "9090:8080"
     depends_on:
       - sqlDb
+...
