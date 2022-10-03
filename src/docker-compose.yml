@@ -1,0 +1,19 @@
+version: "3"
+networks:
+  - spring-sql-network:
+services:
+  sqlDb:
+    image: mysql:latest
+    networks:
+      - spring-sql-network
+    environment:
+      - MYSQL_ROOT_PASSWORD: root
+      - MYSQL_DATABASE: book
+  book-app:
+    image: book-app
+    networks:
+      - spring-sql-network
+    ports:
+      - "9090:8080"
+    depends_on:
+      - sqlDb
